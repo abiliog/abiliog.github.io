@@ -1,43 +1,15 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const book = document.querySelector(".book");
-    const pages = document.querySelectorAll(".page");
-    let currentPage = 0;
-    let isDragging = false;
-    let startX = 0;
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita que el formulario se envíe
 
-    function flipPage(next) {
-        if (next && currentPage < pages.length - 1) {
-            currentPage++;
-        } else if (!next && currentPage > 0) {
-            currentPage--;
-        }
-        const angle = currentPage * -180;
-        book.style.transform = `rotateY(${angle}deg)`;
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    if (username === 'familia' && password === 'familia') {
+        // Redirigir a index.html si las credenciales son correctas
+        window.location.href = 'index.html';
+    } else {
+        // Mostrar mensaje de error si las credenciales son incorrectas
+        document.getElementById('error-message').style.display = 'block';
+        document.getElementById('error-message').textContent = 'Usuario o contraseña incorrectos';
     }
-
-    book.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.clientX;
-    });
-
-    book.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        const deltaX = e.clientX - startX;
-        const threshold = 50;
-        if (deltaX > threshold) {
-            flipPage(false);
-            isDragging = false;
-        } else if (deltaX < -threshold) {
-            flipPage(true);
-            isDragging = false;
-        }
-    });
-
-    book.addEventListener("mouseup", () => {
-        isDragging = false;
-    });
-
-    book.addEventListener("mouseleave", () => {
-        isDragging = false;
-    });
 });

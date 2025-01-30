@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Imagenes de Familia Sanchez</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* Additional CSS for the image gallery and lightbox */
+			.gallery {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 15px;
+				justify-content: center;
+				padding: 20px;
+			}
+
+			.gallery .image-item {
+				width: 250px;
+				height: 250px;
+				background-color: white;
+				border-radius: 10px;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+				overflow: hidden;
+				cursor: pointer;
+				transition: transform 0.3s ease;
+				position: relative;
+			}
+
+			.gallery .image-item:hover {
+				transform: scale(1.05);
+			}
+
+			.gallery .image-item img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+
+			.gallery .image-item .description {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				padding: 10px;
+				text-align: center;
+				background-color: rgba(0, 0, 0, 0.7);
+				color: white;
+				font-size: 14px;
+				font-weight: bold;
+				display: none;
+			}
+
+			.gallery .image-item:hover .description {
+				display: block;
+			}
+
+			/* Lightbox */
+			.lightbox {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0, 0, 0, 0.8);
+				justify-content: center;
+				align-items: center;
+				z-index: 1000;
+			}
+
+			.lightbox img {
+				max-width: 90%;
+				max-height: 90%;
+				border-radius: 10px;
+				cursor: pointer;
+			}
+
+			/* Estilo del botón para ir arriba */
+			#btnScrollToTop {
+				display: none; /* Ocultar por defecto */
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+				z-index: 99;
+				font-size: 18px;
+				border: none;
+				outline: none;
+				background-color: #007bff;
+				color: white;
+				cursor: pointer;
+				padding: 15px;
+				border-radius: 50%;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				transition: background-color 0.3s ease;
+			}
+
+			#btnScrollToTop:hover {
+				background-color: #0056b3;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+		<div id="wrapper">
+
+			<!-- Header -->
+			<header id="header" class="alt style2">
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+			<!-- Menu -->
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">Inicio</a></li>
+							<li><a href="Garcia.html">F. Garcia</a></li>
+							<li><a href="Sanchez.html">F. Sanchez</a></li>
+							<li><a href="George.html">F. George</a></li>
+							<li><a href="Lopez.html">F. Lopez</a></li>
+							<li><a href="Diaz.html">F. Diaz</a></li>
+							<li><a href="BodaGlenda.html">Boda Glenda</a></li>
+
+				</ul>
+				
+			</nav>
+
+			<!-- Banner -->
+			<section id="banner" class="style2">
+				<div class="inner">
+					<span class="image">
+						<img src="images/pic07.jpg" alt="" />
+					</span>
+					<header class="major">
+						<h1>Imágenes de Familia Sanchez</h1>
+					</header>
+					<div class="content">
+						<p>Un viaje a través de nuestras memorias familiares.</p>
+					</div>
+				</div>
+			</section>
+
+			<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+				<section id="one">
+					<div class="inner">
+						<header class="major">
+							<h2>Nuestra Galería</h2>
+						</header>
+						<p>Explora las fotos de nuestra familia y revive los momentos más especiales.</p>
+					</div>
+				</section>
+
+				<!-- Two: Image Gallery -->
+				<section id="two" class="spotlights">
+					<div class="gallery" id="gallery">
+						<!-- Las imágenes se generarán dinámicamente aquí -->
+					</div>
+				
+					<!-- Lightbox -->
+					<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+						<img id="lightboxImage" src="" alt="Enlarged image">
+					</div>
+				
+					<script>
+						// Función para generar la galería de imágenes
+						function generateGallery() {
+							const gallery = document.getElementById('gallery');
+							for (let i = 1; i <= 217; i++) {
+								const imageItem = document.createElement('div');
+								imageItem.className = 'image-item';
+								imageItem.onclick = () => openLightbox(`images/Sanchez/imagenSanchez_${i}.jpg`);
+				
+								const img = document.createElement('img');
+								img.src = `images/Sanchez/imagenSanchez_${i}.jpg`;
+								img.alt = `Image ${i}`;
+				
+								const description = document.createElement('div');
+								description.className = 'description';
+								description.textContent = `Descripción ${i}`;
+				
+								imageItem.appendChild(img);
+								imageItem.appendChild(description);
+								gallery.appendChild(imageItem);
+							}
+						}
+				
+						// Función para abrir la lightbox
+						function openLightbox(imageSrc) {
+							const lightbox = document.getElementById('lightbox');
+							const lightboxImage = document.getElementById('lightboxImage');
+							lightbox.style.display = 'flex';
+							lightboxImage.src = imageSrc;
+						}
+				
+						// Función para cerrar la lightbox
+						function closeLightbox() {
+							const lightbox = document.getElementById('lightbox');
+							lightbox.style.display = 'none';
+						}
+				
+						// Generar la galería al cargar la página
+						window.onload = generateGallery;
+					</script>
+				
+						
+						<!-- Add more images as needed -->
+					</div>
+				</section>
+
+				<!-- Three -->
+				
+
+			</div>
+
+			
+
+			<!-- Footer -->
+			<footer id="footer">
+				<div class="inner">
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/abilio.g.diaz" target="_blank" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/abiliodiaz/?next=%2F" target="_blank" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://github.com/abiliog" target="_blank" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+						<li><a href="https://www.linkedin.com/in/abilio-diaz-7b325b214/" target="_blank" class="icon brands alt fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; AGD</li><li>Abilio García Díaz</li>
+					</ul>
+				</div>
+			</footer>
+
+		</div>
+
+		<!-- Lightbox -->
+		<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+			<img id="lightboxImage" src="" alt="Enlarged image">
+		</div>
+
+		<!-- Botón para ir arriba -->
+		<button id="btnScrollToTop" title="Ir arriba">↑</button>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.scrolly.min.js"></script>
+		<script src="assets/js/jquery.scrollex.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+		<script>
+			// Lightbox functionality
+			function openLightbox(imageSrc) {
+				const lightbox = document.getElementById('lightbox');
+				const lightboxImage = document.getElementById('lightboxImage');
+				lightbox.style.display = 'flex';
+				lightboxImage.src = imageSrc;
+			}
+
+			function closeLightbox() {
+				const lightbox = document.getElementById('lightbox');
+				lightbox.style.display = 'none';
+			}
+
+			// Mostrar u ocultar el botón según el desplazamiento de la página
+			window.onscroll = function() {
+				scrollFunction();
+			};
+
+			function scrollFunction() {
+				const btnScrollToTop = document.getElementById("btnScrollToTop");
+				if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+					btnScrollToTop.style.display = "block";
+				} else {
+					btnScrollToTop.style.display = "none";
+				}
+			}
+
+			// Función para llevar al usuario al principio de la página
+			document.getElementById("btnScrollToTop").onclick = function() {
+				document.body.scrollTop = 0; // Para Safari
+				document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+			};
+		</script>
+
+	</body>
+</html>
